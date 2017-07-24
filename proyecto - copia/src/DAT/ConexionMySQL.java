@@ -19,9 +19,9 @@ import javax.swing.JOptionPane;
 public class ConexionMySQL {
     private Connection conecta = null;
 
-    private String url = "jdbc:mysql://localhost:3306/banca";//ruta de la BD
-    private String user = "root";
-    private String pass = "";
+        private String url = "jdbc:mysql://localhost:3306/medicina";//ruta de la BD
+    private String user = "Carmen";
+    private String pass = "chio12345";
     private String driver = "com.mysql.jdbc.Driver";//driver que permite la conexion: controlador
 
     //Retorna la conexion cada vez que es invocado; metodo de tipo Connection

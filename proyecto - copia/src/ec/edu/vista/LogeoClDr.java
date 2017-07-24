@@ -5,6 +5,9 @@
  */
 package ec.edu.vista;
 
+import ec.edu.controlador.ManejadorPacientes;
+import ec.edu.modelo.Usuarios;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -96,13 +99,67 @@ public class LogeoClDr extends javax.swing.JFrame {
     }//GEN-LAST:event_txtUserActionPerformed
 
     private void jbIngresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbIngresarMouseClicked
-        String user="chio";
-        String password="chio12345";
-        if (txtUser.getText().equals(user)&&pswContrasena.getText().equals(password)) {
-            new principal().setVisible(true);
-            dispose();
-        }else{
-            JOptionPane.showMessageDialog(rootPane, "Usuario o contraseña incorrectos!!!", "Credenciales", 1);
+                try {
+//            DATPacientes objUs = new DATPacientes();
+            //De ResultSet desfragmentar datos
+//        ResultSet rs = objUs.obtenerUsuario();
+//        String user="";
+//        String pass="";
+//        int tipo=0;
+//        if (rs.next()) {
+//            user=rs.getString(1);
+//            pass=rs.getString(2);
+//            tipo=rs.getInt(3);
+//        }
+//        Usuarios objS = new Usuarios(txtUser.getText(), txtPassword.getText(), "1");
+//                Usuarios objD = new Usuarios(txtUser.getText(), txtPassword.getText(), "2");
+//            if (txtUser.getText().equals(user)&&txtPassword.getText().equals(pass)&&objD.getTipo().equals(tipo)) {
+//                new GUIRegistrarCosulta().setVisible(true);
+//                dispose();
+//                
+//            }else if(txtUser.getText().equals(user)&&txtPassword.getText().equals(pass)&&objS.getTipo().equals(tipo)){
+//                new principal().setVisible(true);
+//                dispose();
+//            }else{
+//                JOptionPane.showMessageDialog(rootPane,"Usuario o contraseña incorrectos!!!", "Credenciales", 1);
+//            }
+//
+            if (txtUser.getText().equals("") || pswContrasena.getText().equals("")) {
+                JOptionPane.showMessageDialog(rootPane, "Campos vacíos!!!", "Credenciales", 1);
+            } else {
+                ManejadorPacientes objUsuario = new ManejadorPacientes();
+                ArrayList<Usuarios> lisUsers = new ArrayList<Usuarios>();
+                Usuarios objS = new Usuarios(txtUser.getText(), pswContrasena.getText(), "1");
+                Usuarios objD = new Usuarios(txtUser.getText(), pswContrasena.getText(), "2");
+                lisUsers = objUsuario.obtenerUsuario();
+                String user = "";
+                String pass = "";
+                String tipo = "";
+                for (Usuarios use : lisUsers) {
+                    user=use.getUsuario();
+                    pass=use.getClave();
+                    tipo=use.getTipo();
+//                    if (txtUser.getText().equals(use.getUsuario()) && txtPassword.getText().equals(use.getClave()) && objD.getTipo().equals(use.getTipo())) {
+//                        new GUIRegistrarCosulta().setVisible(true);
+//                        dispose();
+//                    } else if ((txtUser.getText().equals(use.getUsuario())) && (txtPassword.getText().equals(use.getClave())) && objS.getTipo().equals(use.getTipo())) {
+//                        new principal().setVisible(true);
+//                        dispose();
+//                    }
+                }
+                if (txtUser.getText().equals(user)&&pswContrasena.getText().equals(pass)&&objD.getTipo().equals(tipo)) {
+                new GUIRegistrarCosulta().setVisible(true);
+                dispose();
+                
+            }else if(txtUser.getText().equals(user)&&pswContrasena.getText().equals(pass)&&objS.getTipo().equals(tipo)){
+                new principal().setVisible(true);
+                dispose();
+            }else{
+                JOptionPane.showMessageDialog(rootPane,"Usuario o contraseña incorrectos!!!", "Credenciales", 1);
+            }
+            }
+        } catch (Exception ex) {
+            System.err.print(ex);
         }
     }//GEN-LAST:event_jbIngresarMouseClicked
 
