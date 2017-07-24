@@ -207,7 +207,7 @@ public class RegistroPacientesSecre extends javax.swing.JFrame {
             Logger.getLogger(RegistroPacientesSecre.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_generoActionPerformed
-
+    //cambiar datos de combo
     public void cambiarDatsCombo(String genero, ComboBoxModel cbGenero, JComboBox gen) {
         ComboBoxModel comboG = cbGenero;
         for (int j = 1; j < comboG.getSize(); j++) {
